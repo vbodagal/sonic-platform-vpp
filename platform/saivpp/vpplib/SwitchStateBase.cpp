@@ -531,6 +531,10 @@ sai_status_t SwitchStateBase::remove(
         sai_deserialize_object_id(serializedObjectId, objectId);
         return removeVlanMember(objectId);
     }
+    else if (object_type == SAI_OBJECT_TYPE_FDB_ENTRY)
+    {
+        return delFdbEntry(serializedObjectId);
+    }
 
     return remove_internal(object_type, serializedObjectId);
 }

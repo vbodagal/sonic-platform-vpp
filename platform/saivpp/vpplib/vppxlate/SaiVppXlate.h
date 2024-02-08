@@ -187,6 +187,10 @@ typedef enum
     extern int set_sw_interface_l2_bridge(const char *hwif_name, uint32_t bridge_id, bool l2_enable);
     extern int set_l2_interface_vlan_tag_rewrite(const char *hwif_name, uint32_t tag1, uint32_t tag2, uint32_t push_dot1q, uint32_t vtr_op);
     extern int bridge_domain_get_member_count (uint32_t bd_id, uint32_t *member_count);
+    extern int l2fib_add_del(const char *hwif_name, const uint8_t *mac, uint32_t bd_id, bool is_add, bool is_static_mac);
+    extern int l2fib_flush_all();
+    extern int l2fib_flush_int(const char *hwif_name);
+    extern int l2fib_flush_bd(uint32_t bd_id);
 
 #ifdef __cplusplus
 }

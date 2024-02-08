@@ -294,6 +294,9 @@ sai_status_t VirtualSwitchSaiInterface::flushFdbEntries(
         data.fdb_entry.bv_id = vlanid->value.oid;
     }
 
+    /* FDB Flush based on the attr_list from syncd*/
+    ss->vpp_flush_fdb_entry(switch_id, attr_count, attr_list);
+
     if (static_fdbs.size())
     {
         SWSS_LOG_NOTICE("flushing %zu static entries", static_fdbs.size());

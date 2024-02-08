@@ -252,6 +252,10 @@ sai_status_t SwitchStateBase::create(
        sai_deserialize_object_id(serializedObjectId, object_id);
        return createVlanMember(object_id, switch_id, attr_count, attr_list);
     }
+    if (object_type == SAI_OBJECT_TYPE_FDB_ENTRY)
+    {
+       return addFdbEntry(serializedObjectId, switch_id, attr_count, attr_list);
+    }
 
     return create_internal(object_type, serializedObjectId, switch_id, attr_count, attr_list);
 }

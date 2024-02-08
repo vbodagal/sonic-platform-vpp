@@ -159,6 +159,26 @@ namespace saivpp
             sai_status_t vpp_remove_vlan_member(
                     _In_ sai_object_id_t vlan_member_oid);
 
+            /*FDB Entry ADD/DEL and Flush SAI Objects*/
+            sai_status_t addFdbEntry(
+                    _In_ const std::string &serializedObjectId,
+                    _In_ sai_object_id_t switch_id,
+                    _In_ uint32_t attr_count,
+                    _In_ const sai_attribute_t *attr_list);
+            sai_status_t vpp_add_fdb_entry(
+                    _In_ const std::string &serializedObjectId,
+                    _In_ sai_object_id_t switch_id,
+                    _In_ uint32_t attr_count,
+                    _In_ const sai_attribute_t *attr_list);
+	    sai_status_t delfdbEntry(
+                    _In_ const std::string &serializedObjectId);
+            sai_status_t vpp_del_fdb_entry(
+                    _In_ const std::string &serializedObjectId);
+            sai_status_t vpp_flush_fdb_entry(
+                    _In_ sai_object_id_t switch_id,
+                    _In_ uint32_t attr_count,
+                    _In_ const sai_attribute_t *attr_list);
+
         protected:
 
             virtual sai_status_t create_port_dependencies(
